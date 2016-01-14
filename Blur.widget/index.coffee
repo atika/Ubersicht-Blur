@@ -15,12 +15,18 @@ filters =
 
 # Definition of each blurred bloc : 
 # left, top, width and height are required. 
-# Optionnaly you can set additionals styles and image blur, brightness, saturate or contrast.
+# Optionally you can set additional styles and image blur, brightness, saturate or contrast.
+#
 # You can set to auto (left or width) or (top or height)
-# Exemples: 
-# 	left: "auto" and width: 200 (200 pixels width bloc positioned on the right)
+# Examples:
+# 	left: "auto" and width: 200 (200 pixel width bloc positioned on the right)
 # 	left: 200 and width: "auto" (A bloc starting at 200px from the left to the end of the screen)
-# 	top: "auto" and height: 300 (300 pixels height bloc positioned on bottom)
+# 	top: "auto" and height: 300 (300 pixel high bloc positioned on bottom)
+#
+# You can set to center (left or top)
+# Examples:
+#   left: "center" and width: 400 (400 pixel width bloc horizontally centered on the screen)
+#   top: "center" and height: 500 (500 pixel high bloc vertically centered on the screen)
 blocs = [
 	{
 		"left": 330
@@ -81,8 +87,12 @@ afterRender: (domEl)->
 		# Size and position
 		if bloc.left == "auto"
 			bloc.left = $(window).width() - bloc.width
+		else if bloc.left == "center"
+			bloc.left = ($(window).width() - bloc.width) / 2
 		if bloc.top == "auto"
 			bloc.top = $(window).height() - bloc.height
+		else if bloc.top == "center"
+			bloc.top = ($(window).height() - bloc.height) / 2
 		if bloc.width == "auto"
 			bloc.width = $(window).width() - bloc.left
 		if bloc.height == "auto"
