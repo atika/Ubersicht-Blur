@@ -100,5 +100,5 @@ afterRender: (domEl)->
 			$(".#{blocname}",domEl).css(bloc.style)
 
 		# Apply custom filters
-		$(".#{blocname} .flou",domEl).css({"-webkit-filter":"blur(#{blur}px) brightness(#{brightness}%) contrast(#{contrast}%) saturate(#{saturate}%)"})
+		$(".#{blocname} .flou",domEl).css({"backdrop-filter":"blur(#{blur}px) brightness(#{brightness}%) contrast(#{contrast}%) saturate(#{saturate}%)"})
 		i++
